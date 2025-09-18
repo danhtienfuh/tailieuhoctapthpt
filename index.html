@@ -514,9 +514,6 @@
                         <a href="${doc.url}" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2.5 px-3 rounded-lg transition duration-300 shadow-md hover:shadow-lg interactive-element text-sm">
                             <i class="fas fa-download mr-1.5" aria-hidden="true"></i> Tải xuống
                         </a>
-                        <button class="copy-link-btn flex-shrink-0 bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold w-10 h-10 rounded-lg transition duration-300 interactive-element" title="Sao chép liên kết" data-url="${doc.url}">
-                            <i class="fas fa-copy" aria-hidden="true"></i>
-                        </button>
                     </div>`;
                 
                 cardWrapper.appendChild(card);
@@ -603,13 +600,6 @@
                     this.updateGradePageContent();
                 }
             });
-
-            document.body.addEventListener('click', (e) => {
-                const copyBtn = e.target.closest('.copy-link-btn');
-                if (copyBtn) {
-                    this.copyToClipboard(copyBtn.dataset.url, copyBtn);
-                }
-            });
         },
 
         normalizeString(str) {
@@ -635,25 +625,6 @@
             });
         },
 
-        async copyToClipboard(text, buttonElement) {
-            try {
-                await navigator.clipboard.writeText(text);
-                this.showToast('Đã sao chép liên kết!', 'success');
-                if (buttonElement) {
-                    const icon = buttonElement.querySelector('i');
-                    icon.classList.remove('fa-copy');
-                    icon.classList.add('fa-check');
-                    setTimeout(() => {
-                        icon.classList.remove('fa-check');
-                        icon.classList.add('fa-copy');
-                    }, 2000);
-                }
-            } catch (err) {
-                console.error('Lỗi sao chép:', err);
-                this.showToast('Sao chép thất bại!', 'error');
-            }
-        },
-        
         showToast(message, type = 'info') {
             const colors = {
                 info: 'bg-slate-800 text-white', success: 'bg-green-600 text-white',
@@ -832,4 +803,3 @@
     </script>
 </body>
 </html>
-
