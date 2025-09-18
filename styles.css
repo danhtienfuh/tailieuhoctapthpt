@@ -1,7 +1,6 @@
 html { 
     scroll-behavior: smooth; 
-    color-scheme: light dark; /* Support both light and dark modes */
-}
+    color-scheme: light dark; 
 
 body { 
     font-family: 'Be Vietnam Pro', sans-serif; 
@@ -15,7 +14,6 @@ body.dark-mode {
     color: #e2e8f0;
 }
 
-/* Dark mode specific styles */
 body.dark-mode .bg-white,
 body.dark-mode .bg-slate-50 {
     background-color: #1e293b !important;
@@ -48,7 +46,7 @@ body.dark-mode .nav-link:hover {
 }
 
 body.dark-mode .text-indigo-100 {
-    color: #a5b4fc !important; /* Lighter indigo color for better readability */
+    color: #a5b4fc !important; 
 }
 
 #dark-mode-toggle {
@@ -112,9 +110,9 @@ body.dark-mode .text-indigo-100 {
 
 .hero-space {
     background-image: url('./anh.jpg');
-    background-size: cover;  /* Phủ kín toàn bộ background */
-    background-position: center; /* Căn giữa ảnh */
-    background-repeat: no-repeat; /* Không lặp lại ảnh */
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
     position: relative;
     overflow: hidden;
 }
@@ -158,9 +156,9 @@ body.dark-mode .text-indigo-100 {
     width: 200px;
     height: auto;
     transition: all 0.3s ease-in-out;
-    opacity: 0; /* Completely transparent */
-    visibility: hidden; /* Completely hidden */
-    transform: translateX(100%) scale(0.9); /* Move off-screen and slightly scaled down */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(100%) scale(0.9);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -172,9 +170,9 @@ body.dark-mode .text-indigo-100 {
 }
 
 #contact-sidebar.show {
-    opacity: 1; /* Fully visible */
-    visibility: visible; /* Make visible */
-    transform: translateX(0) scale(1); /* Move to original position and full size */
+    opacity: 1; 
+    visibility: visible; 
+    transform: translateX(0) scale(1);
 }
 
 #contact-toggle-btn {
@@ -207,3 +205,4 @@ body.dark-mode .text-indigo-100 {
     background-color: #333;
     transition: all 0.3s ease;
 }
+
