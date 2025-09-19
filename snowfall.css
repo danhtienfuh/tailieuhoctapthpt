@@ -1,0 +1,26 @@
+@keyframes snowfall {
+    0% {
+        transform: translateY(-100%) rotate(0deg) translateX(0);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translateY(50vh) rotate(180deg) translateX(20px);
+        opacity: 0.9;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg) translateX(40px);
+        opacity: 0.5;
+    }
+}
+
+.snowflake {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(255,255,255,0.8);
+    animation: snowfall linear forwards;
+    will-change: transform, opacity;
+}
+
