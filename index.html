@@ -38,6 +38,8 @@
                         <div class="border-t my-1 border-slate-100"></div>
                         <a href="#dgnl" class="nav-dropdown-link block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md m-1" role="menuitem">Ôn thi ĐGNL</a>
                         <a href="#ngonngu" class="nav-dropdown-link block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md m-1" role="menuitem">Ngoại ngữ & Chứng chỉ</a>
+                        <div class="border-t my-1 border-slate-100"></div>
+                        <a href="#camvo" class="nav-dropdown-link block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md m-1" role="menuitem">Cấm Vô</a>
                     </div>
                 </div>
                 <!-- Khóa học Button -->
@@ -54,6 +56,7 @@
             <a href="#lop10" class="block px-4 py-3 text-slate-600 hover:bg-slate-50 nav-link">Lớp 10</a>
             <a href="#dgnl" class="block px-4 py-3 text-slate-600 hover:bg-slate-50 nav-link">Ôn thi ĐGNL</a>
             <a href="#ngonngu" class="block px-4 py-3 text-slate-600 hover:bg-slate-50 nav-link">Ngoại ngữ & Chứng chỉ</a>
+            <a href="#camvo" class="block px-4 py-3 text-slate-600 hover:bg-slate-50 nav-link">Cấm Vô</a>
             <a href="https://zalo.me/g/gjotxd016" target="_blank" rel="noopener noreferrer" class="block px-4 py-3 text-slate-600 hover:bg-slate-50">Nhóm Zalo</a>
         </div>
     </header>
@@ -106,6 +109,11 @@
                                 <div class="text-5xl text-cyan-500 mb-4"><i class="fas fa-language"></i></div>
                                 <h3 class="text-2xl font-bold text-slate-800 mb-2">Ngoại ngữ & Chứng chỉ</h3>
                                 <p class="text-slate-600">Tài liệu IELTS, TOEIC, HSK, SAT và các ngoại ngữ khác.</p>
+                            </a>
+                            <a href="#camvo" class="block p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 interactive-element text-center">
+                                <div class="text-5xl text-cyan-500 mb-4"><i class="fas fa-lock"></i></div>
+                                <h3 class="text-2xl font-bold text-slate-800 mb-2">Cấm Vô</h3>
+                                <p class="text-slate-600">Khu vực cấm vô , cần mật khẩu để tiếp tục</p>
                             </a>
                         </div>
                     </div>
@@ -208,19 +216,19 @@
         <div class="flex items-center w-full">
             <h3 class="font-bold text-slate-800">Contact</h3>
             <div class="contact-links flex space-x-3 ml-auto">
-                <a href="#" target="_blank" class="text-blue-600 hover:text-blue-800">
+                <a href="" target="_blank" class="text-blue-600 hover:text-blue-800">
                     <i class="fab fa-zalo"></i>
                 </a>
-                <a href="#" target="_blank" class="text-blue-700 hover:text-blue-900">
+                <a href="https://www.facebook.com/nguyen.danh.tien.801432" target="_blank" class="text-blue-700 hover:text-blue-900">
                     <i class="fab fa-facebook"></i>
                 </a>
-                <a href="#" target="_blank" class="text-purple-600 hover:text-purple-800">
+                <a href="https://discord.gg/@dtien.as" target="_blank" class="text-purple-600 hover:text-purple-800">
                     <i class="fab fa-discord"></i>
                 </a>
                 <a href="#" target="_blank" class="text-blue-500 hover:text-blue-700">
                     <i class="fab fa-telegram"></i>
                 </a>
-                <a href="#" target="_blank" class="text-gray-800 hover:text-gray-600">
+                <a href="https://github.com/danhtienfuh" target="_blank" class="text-gray-800 hover:text-gray-600">
                     <i class="fab fa-github"></i>
                 </a>
             </div>
@@ -294,6 +302,7 @@
                 'lop12': () => this.showPage('grade', 12),
                 'dgnl': () => this.showPage('grade', 'dgnl'),
                 'ngonngu': () => this.showPage('grade', 'ngonngu'),
+                'camvo': () => this.showPasswordModal('camvo'), // Modified to show password modal
                 'vip': () => this.showPage('vip')
             };
             
@@ -394,12 +403,14 @@
             const titles = {
                 10: 'Tài liệu Lớp 10', 11: 'Tài liệu Lớp 11', 12: 'Tài liệu Lớp 12',
                 'dgnl': 'Tài liệu Ôn Thi ĐGNL & TSA, VACT',
-                'ngonngu': 'Ngoại ngữ & Chứng chỉ'
+                'ngonngu': 'Ngoại ngữ & Chứng chỉ',
+                'camvo': 'Tài liệu Cấm Vô' // Added title for Cấm Vô
             };
             const placeholders = {
                 10: 'Tìm kiếm trong lớp 10...', 11: 'Tìm kiếm trong lớp 11...', 12: 'Tìm kiếm trong lớp 12...',
                 'dgnl': 'Tìm kiếm tài liệu ĐGNL...',
-                'ngonngu': 'Tìm kiếm tài liệu ngoại ngữ...'
+                'ngonngu': 'Tìm kiếm tài liệu ngoại ngữ...',
+                'camvo': 'Tìm kiếm tài liệu Cấm Vô...' // Added placeholder for Cấm Vô
             };
             
             document.getElementById('grade-title').textContent = titles[grade] || 'Thư viện';
@@ -424,6 +435,8 @@
                 filteredDocs = this.documents.filter(doc => languageGrades.includes(String(doc.grade).toLowerCase()));
             } else if (gradeIdentifier === 'dgnl') {
                 filteredDocs = this.documents.filter(doc => dgnlGrades.includes(String(doc.grade).toLowerCase()));
+            } else if (gradeIdentifier === 'camvo') {
+                filteredDocs = this.documents.filter(doc => doc.subject.toLowerCase() === 'cấm vô');
             } else {
                 filteredDocs = [];
             }
@@ -743,6 +756,51 @@
                         window.location.hash = 'vip';
                     });
                 }
+            }, 0);
+        },
+
+        showPasswordModal(section) {
+            const modalId = 'password-modal';
+            const content = `
+                <div class="space-y-4">
+                    <p class="text-slate-600 text-center">Nhập mật khẩu để truy cập khu vực <strong>Cấm Vô</strong>:</p>
+                    <div class="flex items-center border border-slate-300 rounded-lg overflow-hidden">
+                        <i class="fas fa-lock text-slate-400 px-3"></i>
+                        <input type="password" id="forbidden-password" class="w-full py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Nhập mật khẩu" autocomplete="off">
+                    </div>
+                    <div id="password-error" class="text-red-600 text-sm text-center hidden">Mật khẩu không chính xác</div>
+                    <button id="submit-password" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-5 rounded-lg transition-colors">
+                        Xác nhận
+                    </button>
+                </div>
+            `;
+            this.openModal(modalId, 'Khu Vực Cấm', 'fas fa-lock', content);
+
+            setTimeout(() => {
+                const passwordInput = document.getElementById('forbidden-password');
+                const submitButton = document.getElementById('submit-password');
+                const errorMessage = document.getElementById('password-error');
+
+                const checkPassword = () => {
+                    const password = passwordInput.value.trim();
+                    // Thay đổi mật khẩu ở đây
+                    if (password === 'clipsex') {
+                        this.closeModal(modalId);
+                        this.showPage('grade', 'camvo');
+                    } else {
+                        errorMessage.classList.remove('hidden');
+                        passwordInput.classList.add('border-red-500');
+                        setTimeout(() => {
+                            errorMessage.classList.add('hidden');
+                            passwordInput.classList.remove('border-red-500');
+                        }, 2000);
+                    }
+                };
+
+                submitButton.addEventListener('click', checkPassword);
+                passwordInput.addEventListener('keyup', (e) => {
+                    if (e.key === 'Enter') checkPassword();
+                });
             }, 0);
         },
 

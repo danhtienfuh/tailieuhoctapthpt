@@ -8,6 +8,7 @@ app.handleRouting = function() {
         'lop12': () => this.showPage('grade', 12),
         'dgnl': () => this.showPage('grade', 'dgnl'),
         'ngonngu': () => this.showPage('grade', 'ngonngu'),
+        'camvo': () => this.showPage('grade', 'camvo'), // Thêm route cho Cấm Vô
         'vip': () => this.showPage('vip')
     };
     
